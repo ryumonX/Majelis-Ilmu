@@ -30,13 +30,20 @@
 }
 
 .header {
-  background: url('/images/header.png') center;
-  padding: 6rem 2rem;
-  margin: 4rem 2rem;
-  border-radius: 20px;
+  background: linear-gradient(
+    45deg,
+    #013220, #006400, #228b22, #013220 
+     );
+  background-size: 400% 400%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .header::before {
@@ -44,9 +51,61 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(45, 90, 39, 0.9);
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Base layer - large geometric pattern */
+    repeating-linear-gradient(
+      45deg,
+      rgba(212, 175, 55, 0.15) 0px,
+      rgba(212, 175, 55, 0.15) 15px,
+      transparent 15px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(212, 175, 55, 0.1) 0px,
+      rgba(212, 175, 55, 0.1) 20px,
+      transparent 20px,
+      transparent 50px
+    ),
+    /* Accent layer - stars */
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(212, 175, 55, 0.2) 2%,
+      transparent 3%
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(212, 175, 55, 0.2) 2%,
+      transparent 3%
+    );
+  background-size: 
+    80px 80px,
+    100px 100px,
+    50px 50px,
+    50px 50px;
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+  animation: patternAnim 40s linear infinite;
+}
+
+@keyframes patternAnim {
+  0% {
+    background-position: 
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position: 
+      80px 80px,
+      100px 100px,
+      50px 50px,
+      50px 50px;
+  }
 }
 
 .headerContent {
@@ -363,5 +422,102 @@
   .backToTop {
     bottom: 20px;
     right: 20px;
+  }
+}
+
+/* Quran Verses Styling */
+.quranVersesContainer {
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f5f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.verseSectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.verseSectionHeader h3 {
+  font-size: 1.5rem;
+  color: #2c5448;
+  font-weight: 600;
+}
+
+.verseContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.verseCard {
+  position: relative;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #2c5448;
+  transition: transform 0.3s ease;
+}
+
+.verseCard:hover {
+  transform: translateY(-5px);
+}
+
+.arabicVerse {
+  font-size: 1.8rem;
+  text-align: right;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: #2c5448;
+  font-family: 'Amiri', serif;
+}
+
+.verseTranslation {
+  display: block;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.verseReference {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.surahName {
+  font-weight: 600;
+  color: #2c5448;
+}
+
+.verseNumber {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dekorasi tambahan */
+.verseCard::before {
+  content: '﴾﴿';
+  position: absolute;
+  color: rgba(44, 84, 72, 0.1);
+  font-size: 4rem;
+  font-family: 'Amiri', serif;
+  top: -1rem;
+  right: -0.5rem;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .verseContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .arabicVerse {
+    font-size: 1.5rem;
   }
 }

@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import SplashPage from './component/splash';
-import { FiArrowUp, FiClock, FiMapPin, FiBook, FiGift } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { FiArrowUp, FiClock, FiMapPin, FiBook, FiHeart } from 'react-icons/fi';
 
 const App = () => {
   const [isSplashVisible, setIsSplashVisible] = useState(true);
@@ -34,98 +35,141 @@ const App = () => {
       {isSplashComplete && (
         <div className={styles.container}>
           <div className={styles.decorativeBorder}></div>
-          
-          <header className={styles.header}>
+
+          <motion.header
+            className={styles.header}
+            initial={{
+              opacity: 0,
+              y: -20,
+              backgroundPosition: "0% 50%"
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              backgroundPosition: "100% 50%"
+            }}
+            transition={{
+              duration: 1.5,
+              background: {
+                duration: 8,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "linear"
+              }
+            }}
+          >
             <div className={styles.headerContent}>
               <h1 className={styles.headerTitle}>ꦩꦗꦼꦭꦶꦱ꧀ꦲꦶꦭ꧀ꦩꦸ</h1>
-              <p className={styles.headerSubtitle}>"Meraih Kemuliaan Melalui Ilmu"</p>
-              <div className={styles.headerDivider}></div>
+              <p className={styles.headerSubtitle} aria-label="Meneladani Akhlak Mulia Rasulullah">
+                "Meneladani Akhlak Mulia Rasulullah"
+              </p>
+              <hr className={styles.headerDivider} role="separator" />
               <p className={styles.invitationText}>
-                Dengan mengharap ridho Allah Subhanahu wa Ta'ala, kami mengundang:
+                Dengan mengharap ridho Allah Subhanahu wa Ta'ala, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam:
               </p>
             </div>
-          </header>
+          </motion.header>
 
           <main>
             <section className={`${styles.section} ${styles.fadeIn}`}>
-              <div className={styles.sectionIcon}><FiBook /></div>
-              <h2 className={styles.sectionTitle}>Kajian Islam Ilmiah</h2>
+              <div className={styles.sectionIcon}><FiHeart /></div>
+              <h2 className={styles.sectionTitle}>Seminar Akhlak Nabawi</h2>
               <p className={styles.themeText}>
-                "MEMBANGUN KELUARGA SAKINAH BERBASIS SUNNAH NABAWIYAH"
+                "RASULULLAH SURI TELADAN SEMPURNA:
+                <br />Menerapkan Sunnah dalam Kehidupan Modern"
               </p>
-              
+              <div className={styles.verseCard}>
+                <div className={styles.arabicVerse}>
+                  ﴿لَقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ﴾
+                </div>
+                <q className={styles.verseTranslation}>
+                  "Sungguh, telah ada pada (diri) Rasulullah itu suri teladan yang baik bagimu..."
+                </q>
+                <div className={styles.verseReference}>
+                  <span className={styles.surahName}>Al-Ahzab</span>
+                  <span className={styles.verseNumber}>:21</span>
+                </div>
+              </div>
+
               <div className={styles.eventDetails}>
                 <div className={styles.detailCard}>
                   <FiClock className={styles.detailIcon} />
                   <div>
                     <h3>Waktu Pelaksanaan</h3>
-                    <p>Sabtu, 15 Rajab 1446 H</p>
-                    <p>08.00 WIB - Selesai</p>
+                    <p>Ahad, 12 Rabiul Awal 1446 H</p>
+                    <p>08.30 WIB - Dzuhur</p>
                   </div>
                 </div>
-                
+
                 <div className={styles.detailCard}>
                   <FiMapPin className={styles.detailIcon} />
                   <div>
                     <h3>Tempat Acara</h3>
-                    <p>Auditorium Masjid Al-Ikhlas</p>
-                    <p>Jl. Kenangan Indah No. 45, Kota Barakah</p>
+                    <p>Auditorium Islamic Center</p>
+                    <p>Jl. Sunnah Nabi No. 23, Kota Madinah</p>
                   </div>
                 </div>
               </div>
             </section>
 
             <section className={`${styles.section} ${styles.fadeIn}`}>
-              <h2 className={styles.sectionTitle}>Fasilitas Peserta</h2>
+              <h2 className={styles.sectionTitle}>Materi Kajian</h2>
               <div className={styles.benefitGrid}>
                 <div className={styles.benefitCard}>
-                <div className={styles.benefitIcon}>🎁</div>
-
-                  <h3>Paket Materi Eksklusif</h3>
-                  <p>Buku panduan lengkap + Sertifikat peserta</p>
+                  <div className={styles.benefitIcon}>📚</div>
+                  <h3>Sejarah Hidup Rasulullah</h3>
+                  <p>Perjalanan hidup dari kelahiran hingga wafatnya Nabi</p>
                 </div>
                 <div className={styles.benefitCard}>
-                  <div className={styles.benefitIcon}>🎁</div>
-                  <h3>Doorprize Menarik</h3>
-                  <p>Umroh, Paket buku, dan merchandise eksklusif</p>
+                  <div className={styles.benefitIcon}>💞</div>
+                  <h3>Akhlak Mulia</h3>
+                  <p>Keteladanan dalam bermasyarakat dan berkeluarga</p>
                 </div>
                 <div className={styles.benefitCard}>
-                  <div className={styles.benefitIcon}>☕</div>
-                  <h3>Coffee Break</h3>
-                  <p>Hidangan spesial untuk semua peserta</p>
+                  <div className={styles.benefitIcon}>🌐</div>
+                  <h3>Sunnah Modern</h3>
+                  <p>Menerapkan nilai-nilai kenabian di era digital</p>
                 </div>
               </div>
             </section>
 
             <section className={`${styles.section} ${styles.fadeIn}`}>
-              <div className={styles.ctaBox}>
-                <h2 className={styles.ctaTitle}>Segera Daftarkan Diri Anda!</h2>
-                <p className={styles.ctaSubtitle}>Kuota terbatas untuk 200 peserta pertama</p>
-                <div className={styles.ctaTimer}>
-                  <span>⏳ Pendaftaran ditutup dalam: 3 Hari 12 Jam</span>
+                <div className={styles.ctaBox}>
+                  <h2 className={styles.ctaTitle}>Mari Bergabung dalam Kegiatan Dakwah!</h2>
+                  <p className={styles.ctaSubtitle}>Jadilah bagian dari perubahan, hanya untuk 300 peserta pertama</p>
+                  <div className={styles.ctaTimer}>
+                    <span>⏳ Pendaftaran ditutup dalam: 2 Hari 18 Jam</span>
+                  </div>
+                  <button
+                    className={styles.ctaButton}
+                    onClick={() => window.location.href = 'https://wa.me/6283152898953'}
+                  >
+                    Hubungi Kami di WhatsApp dan Daftar Sekarang
+                  </button>
+
                 </div>
-                <button className={styles.ctaButton}>
-                  Daftar Sekarang Gratis
-                </button>
-              </div>
+              
+
             </section>
+
           </main>
 
           <footer className={styles.footer}>
             <div className={styles.footerContent}>
               <p className={styles.contactText}>
-                Konfirmasi Kehadiran: (021) 1234-5678 | WA: 0812-3456-7890
+                Narahubung: Ustadz Ahmad (0812-3456-7890)
+                <br />Aisha (0813-4567-8901)
               </p>
               <div className={styles.footerDivider}></div>
               <p className={styles.footerQuote}>
-                "Sebaik-baik kalian adalah yang mempelajari Al-Qur'an dan mengajarkannya"
-                <br />(HR. Bukhari)
+                "Sesungguhnya aku diutus untuk menyempurnakan akhlak yang mulia"
+                <br />(HR. Al-Baihaqi)
               </p>
             </div>
           </footer>
 
-          <button 
-            className={`${styles.backToTop} ${showScroll ? styles.show : ''}`} 
+          <button
+            className={`${styles.backToTop} ${showScroll ? styles.show : ''}`}
             onClick={scrollTop}
           >
             <FiArrowUp />
