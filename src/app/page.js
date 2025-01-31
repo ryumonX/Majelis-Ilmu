@@ -1,101 +1,139 @@
-import Image from "next/image";
+'use client'
+import React, { useState, useEffect } from 'react';
+import styles from './style.module.css';
+import SplashPage from './component/splash';
+import { FiArrowUp, FiClock, FiMapPin, FiBook, FiGift } from 'react-icons/fi';
 
-export default function Home() {
+const App = () => {
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
+  const [isSplashComplete, setIsSplashComplete] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
+
+  const handleSplashComplete = () => {
+    setIsSplashComplete(true);
+    setIsSplashVisible(false);
+  };
+
+  const checkScrollTop = () => {
+    setShowScroll(window.pageYOffset > 400);
+  };
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScrollTop);
+    return () => window.removeEventListener('scroll', checkScrollTop);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div>
+      {isSplashVisible && <SplashPage onComplete={handleSplashComplete} />}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {isSplashComplete && (
+        <div className={styles.container}>
+          <div className={styles.decorativeBorder}></div>
+          
+          <header className={styles.header}>
+            <div className={styles.headerContent}>
+              <h1 className={styles.headerTitle}>ꦩꦗꦼꦭꦶꦱ꧀ꦲꦶꦭ꧀ꦩꦸ</h1>
+              <p className={styles.headerSubtitle}>"Meraih Kemuliaan Melalui Ilmu"</p>
+              <div className={styles.headerDivider}></div>
+              <p className={styles.invitationText}>
+                Dengan mengharap ridho Allah Subhanahu wa Ta'ala, kami mengundang:
+              </p>
+            </div>
+          </header>
+
+          <main>
+            <section className={`${styles.section} ${styles.fadeIn}`}>
+              <div className={styles.sectionIcon}><FiBook /></div>
+              <h2 className={styles.sectionTitle}>Kajian Islam Ilmiah</h2>
+              <p className={styles.themeText}>
+                "MEMBANGUN KELUARGA SAKINAH BERBASIS SUNNAH NABAWIYAH"
+              </p>
+              
+              <div className={styles.eventDetails}>
+                <div className={styles.detailCard}>
+                  <FiClock className={styles.detailIcon} />
+                  <div>
+                    <h3>Waktu Pelaksanaan</h3>
+                    <p>Sabtu, 15 Rajab 1446 H</p>
+                    <p>08.00 WIB - Selesai</p>
+                  </div>
+                </div>
+                
+                <div className={styles.detailCard}>
+                  <FiMapPin className={styles.detailIcon} />
+                  <div>
+                    <h3>Tempat Acara</h3>
+                    <p>Auditorium Masjid Al-Ikhlas</p>
+                    <p>Jl. Kenangan Indah No. 45, Kota Barakah</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className={`${styles.section} ${styles.fadeIn}`}>
+              <h2 className={styles.sectionTitle}>Fasilitas Peserta</h2>
+              <div className={styles.benefitGrid}>
+                <div className={styles.benefitCard}>
+                <div className={styles.benefitIcon}>🎁</div>
+
+                  <h3>Paket Materi Eksklusif</h3>
+                  <p>Buku panduan lengkap + Sertifikat peserta</p>
+                </div>
+                <div className={styles.benefitCard}>
+                  <div className={styles.benefitIcon}>🎁</div>
+                  <h3>Doorprize Menarik</h3>
+                  <p>Umroh, Paket buku, dan merchandise eksklusif</p>
+                </div>
+                <div className={styles.benefitCard}>
+                  <div className={styles.benefitIcon}>☕</div>
+                  <h3>Coffee Break</h3>
+                  <p>Hidangan spesial untuk semua peserta</p>
+                </div>
+              </div>
+            </section>
+
+            <section className={`${styles.section} ${styles.fadeIn}`}>
+              <div className={styles.ctaBox}>
+                <h2 className={styles.ctaTitle}>Segera Daftarkan Diri Anda!</h2>
+                <p className={styles.ctaSubtitle}>Kuota terbatas untuk 200 peserta pertama</p>
+                <div className={styles.ctaTimer}>
+                  <span>⏳ Pendaftaran ditutup dalam: 3 Hari 12 Jam</span>
+                </div>
+                <button className={styles.ctaButton}>
+                  Daftar Sekarang Gratis
+                </button>
+              </div>
+            </section>
+          </main>
+
+          <footer className={styles.footer}>
+            <div className={styles.footerContent}>
+              <p className={styles.contactText}>
+                Konfirmasi Kehadiran: (021) 1234-5678 | WA: 0812-3456-7890
+              </p>
+              <div className={styles.footerDivider}></div>
+              <p className={styles.footerQuote}>
+                "Sebaik-baik kalian adalah yang mempelajari Al-Qur'an dan mengajarkannya"
+                <br />(HR. Bukhari)
+              </p>
+            </div>
+          </footer>
+
+          <button 
+            className={`${styles.backToTop} ${showScroll ? styles.show : ''}`} 
+            onClick={scrollTop}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <FiArrowUp />
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      )}
     </div>
   );
-}
+};
+
+export default App;

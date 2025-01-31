@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Amiri:wght@400;700&display=swap');
+
+:root {
+  --primary-green: #2D5A27;
+  --secondary-green: #4A7856;
+  --accent-gold: #C5A368;
+  --light-bg: #f8faf8;
+}
+
+.container {
+  position: relative;
+  background: var(--light-bg);
+  min-height: 100vh;
+  font-family: 'Noto Serif', serif;
+  overflow-x: hidden;
+}
+
+.decorativeBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, 
+    var(--primary-green) 0%,
+    var(--accent-gold) 50%,
+    var(--primary-green) 100%
+  );
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header {
+  background: url('/images/header.png') center;
+  padding: 6rem 2rem;
+  margin: 4rem 2rem;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(45, 90, 39, 0.9);
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.headerTitle {
+  font-family: 'Amiri', serif;
+  font-size: 3.5rem;
+  color: var(--accent-gold);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.headerSubtitle {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.headerDivider {
+  width: 200px;
+  height: 2px;
+  background: var(--accent-gold);
+  margin: 2rem auto;
+  border-radius: 2px;
+}
+
+.invitationText {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.section {
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  padding: 3rem;
+  margin: 3rem 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+}
+
+.sectionIcon {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-green);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.sectionTitle {
+  color: var(--primary-green);
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent-gold);
+}
+
+.themeText {
+  font-size: 1.4rem;
+  color: var(--secondary-green);
+  text-align: center;
+  margin: 2rem 0;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.eventDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.detailCard {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(139, 168, 136, 0.1);
+  border-radius: 15px;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.detailCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.detailIcon {
+  font-size: 2rem;
+  color: var(--primary-green);
+  min-width: 50px;
+}
+
+.benefitGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.benefitCard {
+  padding: 2rem;
+  text-align: center;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.benefitCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.benefitIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-green);
+}
+
+.ctaBox {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin: 3rem 0;
+  background: linear-gradient(45deg, var(--primary-green), #1f411b);
+  color: white;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaBox::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url('/images/mesjid.png') center;
+  opacity: 0.1;
+}
+
+.ctaTitle {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ctaSubtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.ctaTimer {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--accent-gold);
+  position: relative;
+  z-index: 1;
+}
+
+.ctaButton {
+  background: linear-gradient(45deg, var(--accent-gold), #b08f4e);
+  color: white;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(197, 163, 104, 0.3);
+}
+
+.footer {
+  background: var(--secondary-green);
+  color: white;
+  padding: 4rem 2rem;
+  margin: 4rem 0 0;
+  position: relative;
+}
+
+.footerContent {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contactText {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footerDivider {
+  width: 200px;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+  margin: 2rem auto;
+}
+
+.footerQuote {
+  font-style: italic;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--primary-green);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  .header {
+    margin: 2rem 1rem;
+    padding: 4rem 1rem;
+  }
+  
+  .headerTitle {
+    font-size: 2.5rem;
+  }
+  
+  .section {
+    padding: 2rem;
+    margin: 2rem 1rem;
+  }
+  
+  .ctaBox {
+    padding: 2rem 1rem;
+  }
+  
+  .backToTop {
+    bottom: 20px;
+    right: 20px;
+  }
+}
