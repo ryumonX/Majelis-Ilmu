@@ -4,6 +4,7 @@
 .container {
   position: relative;
   background: var(--light-bg);
+  color: var(--text-primary);
   min-height: 100vh;
   font-family: 'Noto Serif', serif;
   overflow-x: hidden;
@@ -211,6 +212,7 @@
   align-items: center;
   padding: 2rem;
   background: rgba(139, 168, 136, 0.1);
+  color: var(--text-dark); /* Tambahkan ini */
   border-radius: 15px;
   gap: 1.5rem;
   transition: all 0.3s ease;
