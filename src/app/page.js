@@ -157,7 +157,7 @@ const App = () => {
           <footer className={styles.footer}>
             <div className={styles.footerContent}>
               <p className={styles.contactText}>
-                Narahubung: Ustadz Ahmad (0812-3456-7890)
+                Narahubung: Dewangga XII-RPL 1 (0812-3456-7890)
                 <br />Aisha (0813-4567-8901)
               </p>
               <div className={styles.footerDivider}></div>

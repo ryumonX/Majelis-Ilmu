@@ -157,7 +157,7 @@ function SplashPage({ onComplete }) {
                   reverseGreenOverlay ? 'text-emerald-600' : 'text-white'
                 }`}
               >
-                Mari Jelajahi Keindahan Kota Hujan
+                Dewangga Mustika XII-RPL 1
               </motion.p>
             </motion.div>
           </div>

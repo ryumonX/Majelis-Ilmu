@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Amiri:wght@400;700&display=swap');
 
-:root {
+/* :rootTheme {
   --primary-green: #2D5A27;
   --secondary-green: #4A7856;
   --accent-gold: #C5A368;
   --light-bg: #f8faf8;
-}
+} */
 
 .container {
   position: relative;
@@ -40,7 +40,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
   padding: 2rem;
   position: relative;
   overflow: hidden;
@@ -112,7 +111,7 @@
   position: relative;
   z-index: 1;
   text-align: center;
-  color: white;
+  /* color: white; */
 }
 
 .headerTitle {
