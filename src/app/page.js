@@ -106,7 +106,7 @@ const App = () => {
                   <div>
                     <h3>Tempat Acara</h3>
                     <p>SMK INFOKOM KOTA BOGOR</p>
-                    <p>Jl. Sunnah Nabi No. 23, Kota Madinah</p>
+                    <p>Jl. Letjen Ibrahim Adjie Kota Bogor</p>
                   </div>
                 </div>
               </div>
@@ -134,21 +134,21 @@ const App = () => {
             </section>
 
             <section className={`${styles.section} ${styles.fadeIn}`}>
-                <div className={styles.ctaBox}>
-                  <h2 className={styles.ctaTitle}>Mari Bergabung dalam Kegiatan Dakwah!</h2>
-                  <p className={styles.ctaSubtitle}>Jadilah bagian dari perubahan, hanya untuk 300 peserta pertama</p>
-                  <div className={styles.ctaTimer}>
-                    <span>⏳ Pendaftaran ditutup dalam: 2 Hari 18 Jam</span>
-                  </div>
-                  <button
-                    className={styles.ctaButton}
-                    onClick={() => window.location.href = 'https://wa.me/6283152898953'}
-                  >
-                    Hubungi Kami di WhatsApp dan Daftar Sekarang
-                  </button>
-
+              <div className={styles.ctaBox}>
+                <h2 className={styles.ctaTitle}>Mari Bergabung dalam Kegiatan Dakwah!</h2>
+                <p className={styles.ctaSubtitle}>Jadilah bagian dari perubahan, hanya untuk 300 peserta pertama</p>
+                <div className={styles.ctaTimer}>
+                  <span>⏳ Pendaftaran ditutup dalam: 2 Hari 18 Jam</span>
                 </div>
-              
+                <button
+                  className={styles.ctaButton}
+                  onClick={() => window.location.href = 'https://wa.me/6283152898953'}
+                >
+                  Hubungi Kami di WhatsApp dan Daftar Sekarang
+                </button>
+
+              </div>
+
 
             </section>
 
@@ -157,7 +157,7 @@ const App = () => {
           <footer className={styles.footer}>
             <div className={styles.footerContent}>
               <p className={styles.contactText}>
-                Narahubung: Dewangga XII-RPL 1 (0812-3456-7890)
+                &copy; {new Date().getFullYear()} Dewangga Mustika XII RPL 1. All Rights Reserved.
               </p>
               <div className={styles.footerDivider}></div>
               <p className={styles.footerQuote}>
@@ -166,6 +166,7 @@ const App = () => {
               </p>
             </div>
           </footer>
+
 
           <button
             className={`${styles.backToTop} ${showScroll ? styles.show : ''}`}

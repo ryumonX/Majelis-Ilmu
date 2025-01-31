@@ -1,32 +1,29 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { FaLeaf } from 'react-icons/fa';
+import { FaMoon } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 function SplashPage({ onComplete }) {
   const [isVisible, setIsVisible] = useState(true);
-  const [isSplitting, setIsSplitting] = useState(false);
-  const [showGreenOverlay, setShowGreenOverlay] = useState(false);
-  const [reverseGreenOverlay, setReverseGreenOverlay] = useState(false);
+  const [showEmeraldOverlay, setShowEmeraldOverlay] = useState(false);
+  const [reverseEmeraldOverlay, setReverseEmeraldOverlay] = useState(false);
 
   useEffect(() => {
     const timeline = {
-      showGreen: 2000,
-      hideGreen: 2700,
-      startSplit: 5200,
-      hideAll: 6200,
+      showEmerald: 1500,
+      hideEmerald: 2500,
+      hideAll: 6000,
     };
 
-    const showGreenTimer = setTimeout(() => setShowGreenOverlay(true), timeline.showGreen);
-    const reverseGreenTimer = setTimeout(() => setReverseGreenOverlay(true), timeline.hideGreen);
-    const splitTimer = setTimeout(() => setIsSplitting(true), timeline.startSplit);
+    const showEmeraldTimer = setTimeout(() => setShowEmeraldOverlay(true), timeline.showEmerald);
+    const reverseEmeraldTimer = setTimeout(() => setReverseEmeraldOverlay(true), timeline.hideEmerald);
     const hideTimer = setTimeout(() => {
       setIsVisible(false);
       onComplete();
     }, timeline.hideAll);
 
     return () => {
-      [showGreenTimer, reverseGreenTimer, splitTimer, hideTimer].forEach(clearTimeout);
+      [showEmeraldTimer, reverseEmeraldTimer, hideTimer].forEach(clearTimeout);
     };
   }, [onComplete]);
 
@@ -43,143 +40,186 @@ function SplashPage({ onComplete }) {
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed inset-0 z-[100] w-screen h-screen overflow-hidden touch-none">
-          {/* Split Backgrounds */}
+        <div className="fixed inset-0 z-[100] w-screen h-screen overflow-hidden touch-none bg-emerald-950">
+          {/* Animated Background Patterns */}
           <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: isSplitting ? '-100%' : 0 }}
-            transition={{
-              duration: 1.2,
-              ease: [0.43, 0.13, 0.23, 0.96],
-            }}
-            className="absolute top-0 left-0 right-0 h-1/2 bg-emerald-50 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.3 }}
+            transition={{ duration: 2 }}
+            className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-eyes.png')] mix-blend-soft-light"
+          />
+
+          {/* Islamic Geometric Pattern */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.15 }}
+            transition={{ duration: 2 }}
+            className="absolute inset-0 z-10 mix-blend-soft-light"
           >
-            {/* Top Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#065f46_1px,transparent_1px)] bg-[length:24px_24px]" />
-            </div>
+            <svg 
+              viewBox="0 0 100 100" 
+              className="w-full h-full text-emerald-50/30"
+              style={{ fill: 'currentColor' }}
+            >
+              {/* Hexagonal Grid Pattern */}
+              <pattern 
+                id="islamicPattern" 
+                patternUnits="userSpaceOnUse" 
+                width="10" 
+                height="10"
+              >
+                <path 
+                  d="M 0 5 L 5 0 L 15 0 L 20 5 L 15 10 L 5 10 Z
+                       M 10 5 L 5 2.5 L 5 7.5 Z
+                       M 15 7.5 L 15 2.5 L 10 5 Z
+                       M 5 2.5 L 2.5 5 L 5 7.5 Z
+                       M 15 2.5 L 17.5 5 L 15 7.5 Z"
+                  fill="currentColor"
+                />
+              </pattern>
+              
+              <rect 
+                width="100%" 
+                height="100%" 
+                fill="url(#islamicPattern)"
+              />
+              
+              {/* Animated Rotating Elements */}
+              <motion.g
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                <circle 
+                  cx="50" 
+                  cy="50" 
+                  r="48" 
+                  stroke="currentColor" 
+                  strokeWidth="0.5" 
+                  fill="none"
+                  strokeDasharray="4 2"
+                />
+                <path 
+                  d="M50,5 L55,20 L70,25 L55,30 L50,45 L45,30 L30,25 L45,20 Z"
+                  stroke="currentColor"
+                  strokeWidth="0.3"
+                  fill="none"
+                />
+              </motion.g>
+            </svg>
+            
+            {/* Blur Overlay */}
+            <div className="absolute inset-0 backdrop-blur-[2px] bg-white/5" />
           </motion.div>
 
-          <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: isSplitting ? '100%' : 0 }}
-            transition={{
-              duration: 1.2,
-              ease: [0.43, 0.13, 0.23, 0.96],
-            }}
-            className="absolute bottom-0 left-0 right-0 h-1/2 bg-emerald-50 overflow-hidden"
-          >
-            {/* Bottom Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#065f46_1px,transparent_1px)] bg-[length:24px_24px]" />
-            </div>
-          </motion.div>
-
-          {/* Green Overlay */}
+          {/* Flowing Gradient Overlay */}
           <motion.div
             initial={{ y: '100%' }}
             animate={{
-              y: showGreenOverlay ? 0 : '100%',
-              y: reverseGreenOverlay ? '100%' : 0,
+              y: showEmeraldOverlay ? 0 : '100%',
+              y: reverseEmeraldOverlay ? '100%' : 0,
             }}
             transition={{
               duration: 1.4,
               ease: [0.43, 0.13, 0.23, 0.96],
             }}
-            className="absolute inset-0 bg-gradient-to-b from-emerald-600 to-emerald-700 z-20"
+            className="absolute inset-0 bg-gradient-to-b from-emerald-400 via-emerald-600 to-emerald-900 z-20 mix-blend-multiply"
           />
 
-          {/* Split Containers */}
-          <div className="absolute inset-0 z-30">
-            {/* Top Content */}
+          {/* Main Content Container */}
+          <div className="absolute inset-0 z-30 flex flex-col items-center justify-center">
+            {/* Animated Crescent Moon */}
             <motion.div
-              initial={{ y: 0 }}
-              animate={{ y: isSplitting ? '-100%' : 0 }}
+              initial={{ rotate: -30, opacity: 0, scale: 0.8 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
               transition={{
-                duration: 1.2,
-                ease: [0.43, 0.13, 0.23, 0.96],
+                delay: 0.5,
+                duration: 1.5,
+                type: "spring",
+                stiffness: 120,
+                damping: 12,
               }}
-              className="absolute top-0 left-0 right-0 h-1/2 flex items-end justify-center pb-2"
+              className="mb-8 relative w-32 h-32 flex items-center justify-center" // Fixed size container
+              style={{ willChange: 'transform, opacity' }} // Optimize for performance
             >
-              <div className="text-center mb-4">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.3,
-                    duration: 1,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                  }}
-                  className="flex items-center justify-center gap-3 mb-2"
-                >
-                  <FaLeaf
-                    className={`w-8 h-8 transition-colors duration-1000 ${
-                      reverseGreenOverlay ? 'text-emerald-600' : 'text-white'
-                    }`}
-                  />
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.4,
-                    duration: 1,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                  }}
-                  className={`text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight transition-colors duration-1000 ${
-                    reverseGreenOverlay ? 'text-emerald-800' : 'text-white'
-                  }`}
-                >
-                    Assalamualaikum
-                </motion.h1>
-              </div>
+              {/* Moon Icon */}
+              <FaMoon
+                size={90}
+                className="text-emerald-300 relative z-10 drop-shadow-lg"
+              />
+
+              {/* Circular Background */}
+              <motion.div
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  delay: 0.5, // Sync with the moon animation
+                  duration: 1.5,
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 12,
+                }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-emerald-900 rounded-full z-0 shadow-xl"
+                style={{ willChange: 'transform' }} // Optimize for performance
+              />
             </motion.div>
 
-            {/* Bottom Content */}
+            {/* Arabic Calligraphy */}
             <motion.div
-              initial={{ y: 0 }}
-              animate={{ y: isSplitting ? '100%' : 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
+                delay: 0.8,
                 duration: 1.2,
-                ease: [0.43, 0.13, 0.23, 0.96],
               }}
-              className="absolute bottom-0 left-0 right-0 h-1/2 flex items-start justify-center pt-2"
+              className="text-4xl md:text-6xl bg-gradient-to-r from-emerald-200 to-emerald-400 bg-clip-text text-transparent font-arabic mb-4"
             >
-              <motion.p
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.5,
-                  duration: 1,
-                  ease: [0.43, 0.13, 0.23, 0.96],
-                }}
-                className={`text-lg md:text-xl lg:text-2xl font-medium tracking-wide transition-colors duration-1000 ${
-                  reverseGreenOverlay ? 'text-emerald-600' : 'text-white'
-                }`}
-              >
-                Dewangga Mustika XII-RPL 1
-              </motion.p>
+              ٱلسَّلَامُ عَلَيْكُمْ
             </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                delay: 1.0,
+                type: "spring",
+                stiffness: 100,
+                damping: 10
+              }}
+              className="text-3xl md:text-4xl font-bold text-emerald-50 mb-2 drop-shadow-lg"
+            >
+              Assalamualaikum
+            </motion.h1>
+
+            {/* Subtext with Animated Border */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 1.2,
+                duration: 1.0,
+              }}
+              className="text-lg text-emerald-300 px-4 py-2 rounded-lg border-2 border-emerald-400/30 bg-emerald-900/20 backdrop-blur-sm"
+            >
+              Dewangga Mustika XII-RPL 1
+            </motion.p>
           </div>
 
-          {/* Decorative Circles */}
+          {/* Geometric Pattern Overlay */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{
-              scale: 1,
-              opacity: isSplitting || showGreenOverlay ? 0 : 0.3,
-            }}
+            initial={{ scale: 1.2, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.2 }}
             transition={{
-              scale: { delay: 0.2, duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] },
-              opacity: { duration: 0.8 },
+              duration: 2.5,
+              ease: "easeOut"
             }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[101]"
+            className="absolute inset-0 mix-blend-overlay"
           >
-            <div className="relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] md:w-[300px] md:h-[300px] border border-emerald-300/30 rounded-full animate-[spin_20s_linear_infinite]" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] md:w-[350px] md:h-[350px] border border-emerald-300/20 rounded-full animate-[spin_25s_linear_infinite_reverse]" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] border border-emerald-300/10 rounded-full animate-[spin_30s_linear_infinite]" />
-            </div>
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png')]" />
           </motion.div>
         </div>
       )}

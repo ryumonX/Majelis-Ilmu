@@ -27,8 +27,8 @@
 .header {
   background: linear-gradient(
     45deg,
-    #013220, #006400, #228b22, #013220 
-     );
+    #003300, #004d00, #246824, #003300
+  );
   background-size: 400% 400%;
   min-height: 100vh;
   display: flex;
@@ -39,6 +39,7 @@
   position: relative;
   overflow: hidden;
 }
+
 
 .header::before {
   content: '';
@@ -134,11 +135,15 @@
 }
 
 .invitationText {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  color: gold; 
+  font-weight: bold; 
 }
+
+
 
 .section {
   position: relative;
