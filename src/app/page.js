@@ -105,7 +105,7 @@ const App = () => {
                   <FiMapPin className={styles.detailIcon} />
                   <div>
                     <h3>Tempat Acara</h3>
-                    <p>Auditorium Islamic Center</p>
+                    <p>SMK INFOKOM KOTA BOGOR</p>
                     <p>Jl. Sunnah Nabi No. 23, Kota Madinah</p>
                   </div>
                 </div>
@@ -158,7 +158,6 @@ const App = () => {
             <div className={styles.footerContent}>
               <p className={styles.contactText}>
                 Narahubung: Dewangga XII-RPL 1 (0812-3456-7890)
-                <br />Aisha (0813-4567-8901)
               </p>
               <div className={styles.footerDivider}></div>
               <p className={styles.footerQuote}>
