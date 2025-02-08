@@ -64,9 +64,12 @@ const App = () => {
                 "Meneladani Akhlak Mulia Rasulullah"
               </p>
               <hr className={styles.headerDivider} role="separator" />
-              <p className={styles.invitationText}>
-                Dengan mengharap ridho Allah Subhanahu wa Ta'ala, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam:
-              </p>
+              <div className={styles.invitationContainer}>
+                <p className={`${styles.invitationText} ${styles.glow}`}>
+                  Dengan mengharap ridho Allah Subhanahu wa Ta'ala, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam:
+                </p>
+              </div>
+
             </div>
           </motion.header>
 

@@ -134,14 +134,29 @@
   border-radius: 2px;
 }
 
-.invitationText {
-  font-size: 1.4rem;
+.invitationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
   max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-  color: gold; 
-  font-weight: bold; 
+  margin: auto;
 }
+
+.invitationText {
+  font-size: 1.2rem;
+  color: #d4af37;
+  font-weight: 500;
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+.glow {
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+}
+
 
 
 
