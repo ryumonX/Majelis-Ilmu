@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import SplashPage from './component/splash';
 import { motion } from 'framer-motion';
+import InvitationSection from './component/text';
 import { FiArrowUp, FiClock, FiMapPin, FiBook, FiHeart } from 'react-icons/fi';
 
 const App = () => {
@@ -64,11 +65,8 @@ const App = () => {
                 "Meneladani Akhlak Mulia Rasulullah"
               </p>
               <hr className={styles.headerDivider} role="separator" />
-              <div className={styles.invitationContainer}>
-                <p className={`${styles.invitationText} ${styles.glow}`}>
-                  Dengan mengharap ridho Allah Subhanahu wa Ta'ala, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam:
-                </p>
-              </div>
+
+              <InvitationSection />
 
             </div>
           </motion.header>
