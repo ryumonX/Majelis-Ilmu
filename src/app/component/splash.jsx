@@ -113,6 +113,7 @@ function SplashPage({ onComplete }) {
                   }}
                   className="flex items-center justify-center gap-3 mb-2"
                 >
+
                   <motion.div
                     initial={{ rotate: -30, opacity: 0, scale: 0.8 }}
                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
@@ -147,6 +148,7 @@ function SplashPage({ onComplete }) {
                       style={{ willChange: 'transform' }}
                     />
                   </motion.div>
+                  
                 </motion.div>
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
@@ -162,6 +164,7 @@ function SplashPage({ onComplete }) {
                 >
                   Assalamualaikum
                 </motion.h1>
+                
               </div>
             </motion.div>
 
@@ -211,7 +214,9 @@ function SplashPage({ onComplete }) {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] border border-emerald-400/10 rounded-full animate-[spin_30s_linear_infinite]" />
             </div>
           </motion.div>
-        </div>
+          
+          </div>
+        
       )}
     </AnimatePresence>
   );
