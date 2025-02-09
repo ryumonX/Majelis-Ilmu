@@ -157,9 +157,6 @@
   text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
 }
 
-
-
-
 .section {
   position: relative;
   background: white;
@@ -417,7 +414,7 @@
 
 @media (max-width: 768px) {
   .header {
-    margin: 2rem 1rem;
+   
     padding: 4rem 1rem;
   }
   
